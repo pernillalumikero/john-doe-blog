@@ -67,7 +67,7 @@ async function fetchData(id) {
                 
                 for (let header of blogHeaders) {
                     document.getElementById(header.id).addEventListener("click", (e) => {
-                       e.target.nextElementSibling.classList.toggle("wrapper");
+                       $(e.target.nextElementSibling).slideToggle();  
                     })
                 };
 
