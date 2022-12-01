@@ -26,7 +26,7 @@ async function fetchData(id) {
         //using id to know what page to show
         switch(id) {
             case "blog-posts": 
-                document.getElementById("header").innerText = "Blog Posts";
+                document.getElementById("header").innerText = "Blog posts";
                 document.getElementById("content").innerHTML = "";
 
                 //loop through blog posts
