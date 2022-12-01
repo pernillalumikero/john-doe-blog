@@ -1,0 +1,99 @@
+body {
+    width: 80%;
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    background-image: url("../img/coffee.png");
+    background-size: cover;
+    background-color: rgb(123, 123, 123);
+}
+
+#start-link:hover {
+    border-bottom: 10px solid rgb(69, 228, 249);
+}
+
+#blog-link:hover {
+    border-bottom: 10px solid rgb(180, 133, 250);
+}
+
+#author-link:hover {
+    border-bottom: 10px solid rgb(233, 99, 251);
+}
+
+#about-link:hover {
+    border-bottom: 10px solid rgba(255, 234, 0, 0.926);
+}
+
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 20px;
+    text-align: center;
+}
+
+section img {
+    margin-left: 25%;
+    width: 400px;
+}
+
+.wrapper {
+    display: none;
+}
+
+h2, i {
+    margin-left: 20px;
+}
+
+h2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
+i {
+    text-transform: capitalize;
+}
+
+div {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: whitesmoke;
+}
+
+p { 
+    margin: 20px 5%;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul {
+    border: 1px solid rgb(230, 230, 1);
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: rgb(32, 32, 32);
+    border-radius: 5px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 1.5px;
+    font-size: x-large;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+footer { 
+    text-align: center;
+    margin-top: auto;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(32, 32, 32);
+    line-height: 30px;
+}
