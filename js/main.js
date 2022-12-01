@@ -10,53 +10,50 @@
  *
  */
 
- let blogLink = document.getElementById("blog-link");
- let authorLink = document.getElementById("author-link");
- let aboutLink = document.getElementById("about-link");
- let startLink = document.getElementById("start-link");
+//start link reloads page to get back to start
+let startLink = document.getElementById("start-link");
 
- startLink.addEventListener("click", () => {
+startLink.addEventListener("click", () => {
     location.reload();
- })
+});
 
- blogLink.addEventListener("click", () => {
-    fetchData(blogLink);
- })
+//get all other links and add eventlistner to all with loop
+const links = document.querySelectorAll(".content-links");
+
+for(let link of links) {
+    link.addEventListener("click", () => {
+        //call function with link id
+        fetchData(link.id);
+    });
+}
  
- authorLink.addEventListener("click", () => {
-    fetchData(authorLink);
- 
- })
- 
- aboutLink.addEventListener("click", () => {
-    fetchData(aboutLink);
- })
- 
- async function fetchData(content) {
-     try { 
+async function fetchData(id) {
+    try { 
         const response = await fetch("https://codexplained.se/simple_json.php");
         if (!response.ok) {
             throw new Error ("Http error: " + response.status);
         }
         const data = await response.json();
 
-        switch(content) {
-            
-            case blogLink: 
+        //using id to know what page to show
+        switch(id) {
+            case "blog-posts": 
                 document.getElementById("header").innerText = "Blog Posts";
                 document.getElementById("content").innerHTML = "";
 
+                //loop through blog posts
                 for (let i = 0; i < data.blog_posts.length; i++) {
                 
                 let tags = "";
-         
+                //looping through tags to add comma and space
                 for(let tag of data.blog_posts[i].tags) {
                     tags += `${tag}, `
                 }
 
+                //generate blog posts and add to content div
                 document.getElementById("content").innerHTML += `
                 <div>
-                    <h2 id="blog-header${i+1}">${data.blog_posts[i].title}</h2>
+                    <h2 id="blog-header${i+1}" class="blog-headers">${data.blog_posts[i].title}</h2>
                     <div class="wrapper">
                         <i>${data.blog_posts[i].date}</i>
                         <p>${data.blog_posts[i].text}</p>
@@ -65,13 +62,19 @@
                 </div>`;
                 }
 
-                toggleBlogContent("blog-header1");
-                toggleBlogContent("blog-header2");
-                toggleBlogContent("blog-header3");
+                //toggle blog posts content
+                const blogHeaders = document.querySelectorAll(".blog-headers");
+                
+                for (let header of blogHeaders) {
+                    document.getElementById(header.id).addEventListener("click", (e) => {
+                       e.target.nextElementSibling.classList.toggle("wrapper");
+                    })
+                };
 
                 break;
             
-            case authorLink: 
+            case "author": 
+                //generate content for author page
                 document.getElementById("header").innerText = "Author";
                 document.getElementById("content").innerHTML = `
                 <div>
@@ -80,7 +83,8 @@
                 </div>`;
                 break;
 
-            case aboutLink: 
+            case "about": 
+                //generate content for about page
                 document.getElementById("header").innerText = "About";
                 document.getElementById("content").innerHTML = `
                 <div>
@@ -93,11 +97,4 @@
      } catch (error) {
          console.log(error);
      }
-}
-
-function toggleBlogContent(blogHeader) {
-    document.getElementById(blogHeader).addEventListener("click", () => {
-        let wrapperDiv = document.getElementById(blogHeader).nextElementSibling;
-        wrapperDiv.classList.toggle("wrapper");
-    })
 }

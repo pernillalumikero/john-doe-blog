@@ -9,19 +9,23 @@ body {
     background-color: rgb(123, 123, 123);
 }
 
+#blog-header1, #blog-header2, #blog-header3 {
+    cursor: pointer;
+}
+
 #start-link:hover {
     border-bottom: 10px solid rgb(69, 228, 249);
 }
 
-#blog-link:hover {
+#blog-posts:hover {
     border-bottom: 10px solid rgb(180, 133, 250);
 }
 
-#author-link:hover {
+#author:hover {
     border-bottom: 10px solid rgb(233, 99, 251);
 }
 
-#about-link:hover {
+#about:hover {
     border-bottom: 10px solid rgba(255, 234, 0, 0.926);
 }
 
@@ -46,7 +50,6 @@ h2, i {
 
 h2 {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    cursor: pointer;
 }
 
 i {
@@ -67,7 +70,6 @@ p {
 }
 
 ul {
-    border: 1px solid rgb(230, 230, 1);
     padding: 20px;
     display: flex;
     flex-direction: row;
