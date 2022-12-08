@@ -13,8 +13,8 @@ for(let link of links) {
         //call function with link id
         fetchData(link.id);
     });
-}
- 
+} 
+
 async function fetchData(id) {
     try { 
         const response = await fetch("https://codexplained.se/simple_json.php");
@@ -26,17 +26,11 @@ async function fetchData(id) {
         //using id to know what page to show
         switch(id) {
             case "blog-posts": 
-                document.getElementById("header").innerText = "Blog posts";
                 document.getElementById("content").innerHTML = "";
 
                 //loop through blog posts
                 for (let i = 0; i < data.blog_posts.length; i++) {
-                
-                let tags = "";
-                //looping through tags to add comma and space
-                for(let tag of data.blog_posts[i].tags) {
-                    tags += `${tag}, `
-                }
+
 
                 //generate blog posts and add to content div
                 document.getElementById("content").innerHTML += `
@@ -45,7 +39,7 @@ async function fetchData(id) {
                     <div class="wrapper">
                         <i>${data.blog_posts[i].date}</i>
                         <p>${data.blog_posts[i].text}</p>
-                        <i>Tags: ${tags.slice(0, -2)}</i>
+                        <i>Tags: ${data.blog_posts[i].tags.join(", ")}</i>
                     </div>
                 </div>`;
                 }
@@ -53,9 +47,10 @@ async function fetchData(id) {
                 //toggle blog posts content
                 const blogHeaders = document.querySelectorAll(".blog-headers");
                 
+
                 for (let header of blogHeaders) {
-                    document.getElementById(header.id).addEventListener("click", (e) => {
-                       $(e.target.nextElementSibling).slideToggle();  
+                    header.addEventListener("click", (e) => {
+                    $(e.target.nextElementSibling).slideToggle();  
                     })
                 };
 
@@ -63,7 +58,6 @@ async function fetchData(id) {
             
             case "author": 
                 //generate content for author page
-                document.getElementById("header").innerText = "Author";
                 document.getElementById("content").innerHTML = `
                 <div>
                     <h2>${data.author}</h2>
@@ -73,7 +67,6 @@ async function fetchData(id) {
 
             case "about": 
                 //generate content for about page
-                document.getElementById("header").innerText = "About";
                 document.getElementById("content").innerHTML = `
                 <div>
                     <h2>The nonsense blog</h2>
@@ -81,6 +74,12 @@ async function fetchData(id) {
                 </div>`;
             break;
         }
+
+        if (id.search("-") != -1) {
+            id = id.replace("-", " ");
+        }
+        
+        document.getElementById("header").innerText = id;
             
      } catch (error) {
          console.log(error);
