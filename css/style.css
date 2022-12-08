@@ -9,7 +9,8 @@ body {
     background-color: rgb(123, 123, 123);
 }
 
-#blog-header1, #blog-header2, #blog-header3 {
+.blog-headers {
+    width: fit-content;
     cursor: pointer;
 }
 
