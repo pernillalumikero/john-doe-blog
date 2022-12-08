@@ -25,7 +25,7 @@ async function fetchData(id) {
 
         //using id to know what page to show
         switch(id) {
-            case "blog-posts": 
+            case "blog-posts-hej-kompis": 
                 document.getElementById("content").innerHTML = "";
 
                 //loop through blog posts
@@ -74,11 +74,11 @@ async function fetchData(id) {
         }
 
         if (id.search("-") != -1) {
-            id = id.replace("-", " ");
+            id = id.replace(/-/g, " ");
         }
 
         let headline = id.charAt(0).toUpperCase() + id.slice(1);
-        
+
         document.getElementById("header").innerText = headline;
             
      } catch (error) {
