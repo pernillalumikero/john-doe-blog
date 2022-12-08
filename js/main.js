@@ -23,11 +23,11 @@ async function fetchData(id) {
         }
         const data = await response.json();
 
+        
         //using id to know what page to show
         switch(id) {
-            case "blog-posts-hej-kompis": 
-                document.getElementById("content").innerHTML = "";
-
+            case "blog-posts": 
+            document.getElementById("content").innerHTML = "";
                 //loop through blog posts
                 for (let post of data.blog_posts) {
 
