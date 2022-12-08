@@ -29,24 +29,22 @@ async function fetchData(id) {
                 document.getElementById("content").innerHTML = "";
 
                 //loop through blog posts
-                for (let i = 0; i < data.blog_posts.length; i++) {
-
+                for (let post of data.blog_posts) {
 
                 //generate blog posts and add to content div
                 document.getElementById("content").innerHTML += `
                 <div>
-                    <h2 id="blog-header${i+1}" class="blog-headers">${data.blog_posts[i].title}</h2>
+                    <h2 class="blog-headers">${post.title}</h2>
                     <div class="wrapper">
-                        <i>${data.blog_posts[i].date}</i>
-                        <p>${data.blog_posts[i].text}</p>
-                        <i>Tags: ${data.blog_posts[i].tags.join(", ")}</i>
+                        <i>${post.date}</i>
+                        <p>${post.text}</p>
+                        <i>Tags: ${post.tags.join(", ")}</i>
                     </div>
                 </div>`;
                 }
 
                 //toggle blog posts content
                 const blogHeaders = document.querySelectorAll(".blog-headers");
-                
 
                 for (let header of blogHeaders) {
                     header.addEventListener("click", (e) => {
