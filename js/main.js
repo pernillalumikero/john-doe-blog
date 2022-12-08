@@ -76,8 +76,10 @@ async function fetchData(id) {
         if (id.search("-") != -1) {
             id = id.replace("-", " ");
         }
+
+        let headline = id.charAt(0).toUpperCase() + id.slice(1);
         
-        document.getElementById("header").innerText = id;
+        document.getElementById("header").innerText = headline;
             
      } catch (error) {
          console.log(error);
