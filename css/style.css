@@ -36,9 +36,12 @@ h1 {
     text-align: center;
 }
 
-section img {
-    margin-left: 25%;
-    width: 400px;
+#content {
+   text-align: center;
+}
+
+#author-img {
+    width: 420px;
 }
 
 .wrapper {
